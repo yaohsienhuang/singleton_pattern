@@ -1,7 +1,6 @@
 # singleton pattern
 使用python實作singleton pattern
-## 使用方式：
-
+## 實作方式：
 * python 裝飾器: 
 ```python=
 def singleton(cls):
