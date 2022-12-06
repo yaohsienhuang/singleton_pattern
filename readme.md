@@ -1,4 +1,9 @@
-# decorator
+# singleton pattern
+使用python實作singleton pattern
+## 使用方式：
+
+* python 裝飾器: 
+```python=
 def singleton(cls):
     _instance=dict()
     def inner(*args, **kwargs):
@@ -8,8 +13,9 @@ def singleton(cls):
         _instance[cls]=obj
         return obj
     return inner
-
-# decorator with attr
+```
+* python 裝飾器 : hasattr/getattr/setattr
+```python=
 def singleton_attr(cls):
     def inner(*args, **kwargs):
         if hasattr(cls,'__instance'):
@@ -18,8 +24,9 @@ def singleton_attr(cls):
         setattr(cls,'__instance',obj)
         return obj
     return inner
-
-# metaclass
+```
+* python 裝飾器 : metaclass
+```python=
 class singleton_metaclass(type):
     def __call__(cls, *args, **kwargs):
         if hasattr(cls,'__instance'):
@@ -27,20 +34,4 @@ class singleton_metaclass(type):
         obj=super().__call__(*args, **kwargs)
         setattr(cls,'__instance',obj)
         return obj
-
-@singleton
-class human():
-    pass
-
-class human_meta(metaclass=singleton_metaclass):
-    pass
-    
-if __name__=='__main__':
-    
-    h1=human()
-    h2=human()
-    print(h1 is h2)
-    
-    h3=human_meta()
-    h4=human_meta()
-    print(h3 is h4)
+```
