@@ -24,7 +24,7 @@ def singleton_attr(cls):
         return obj
     return inner
 ```
-* python 裝飾器 : metaclass
+* python class : metaclass
 ```python=
 class singleton_metaclass(type):
     def __call__(cls, *args, **kwargs):
